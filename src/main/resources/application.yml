@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://host.docker.internal:5433/produto}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:1234}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        boot:
+          allow_jdbc_metadata_access: false
+        ddl-auto: none
+  data:
+    redis:
+      host: ${SPRING_REDIS_URL:localhost}
+      port: ${SPRING_REDIS_PORT:6379}
+  sql:
+    init:
+      mode: never
+  cloud:
+    aws:
+      credentials:
+        access-key: ${AWS_ACCESS_KEY:test}
+        secret-key: ${AWS_SECRET_KEY:test}
+        session: ${AWS_SESSION_TOKEN:test}
+      region:
+        static: ${AWS_REGION:us-east-1}
+      sqs:
+        endpoint: ${SQS_URL:http://localhost:4567}
+        queues:
+          notifica-video-processado: notifica-video-processado
+          processamento-realizado: processamento-realizado
+          video-em-processamento: video-em-processamento
+          erro-processamento: erro-processamento
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  server:
+    servlet:
+      context-path: /actuator
