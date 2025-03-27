@@ -3,17 +3,17 @@ package com.leodelmiro.gerencia.dataprovider.gateway
 import com.leodelmiro.gerencia.core.dataprovider.ListaEnviosPorAutorGateway
 import com.leodelmiro.gerencia.core.domain.Envio
 import com.leodelmiro.gerencia.core.domain.Status
-import com.leodelmiro.gerencia.dataprovider.repository.ArquivoRepository
+import com.leodelmiro.gerencia.dataprovider.repository.EnvioRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 @Component
 class ListaEnviosPorAutorGatewayImpl(
     @Autowired
-    private val arquivoRepository: ArquivoRepository,
+    private val envioRepository: EnvioRepository,
 ) : ListaEnviosPorAutorGateway {
 
     override fun executar(autor: String, status: Status?): List<Envio> {
-        return arquivoRepository.listarAquivosPorAutor(autor, status?.valor).map { arquivoEntity -> arquivoEntity.toEnvio() }
+        return envioRepository.listarAquivosPorAutor(autor, status?.valor).map { arquivoEntity -> arquivoEntity.toEnvio() }
     }
 }

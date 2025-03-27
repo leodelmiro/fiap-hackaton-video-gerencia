@@ -3,6 +3,7 @@ package com.leodelmiro.gerencia.entrypoint.api
 import com.leodelmiro.gerencia.core.domain.Envio
 import com.leodelmiro.gerencia.core.domain.Status.Companion.fromValor
 import com.leodelmiro.gerencia.core.usecase.BuscaEnvioPorIdUseCase
+import com.leodelmiro.gerencia.core.usecase.BuscaEnvioPorNomeEAutorUseCase
 import com.leodelmiro.gerencia.core.usecase.ListaEnviosPorAutorUseCase
 import com.leodelmiro.gerencia.entrypoint.api.shared.GlobalControllerAdvice.ErrorResponse
 import com.leodelmiro.gerencia.entrypoint.api.utils.TokenDecoder.decodeUsername
@@ -21,16 +22,34 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/v1/envios")
 class EnvioApi(
     private val buscaEnvioPorIdUseCase: BuscaEnvioPorIdUseCase,
+    private val buscaEnvioPorNomeEAutorUseCase: BuscaEnvioPorNomeEAutorUseCase,
     private val listaEnviosPorAutorUseCase: ListaEnviosPorAutorUseCase
 ) {
+
+    @Operation(
+        summary = "Verifica nome envio existente",
+        description = "Verifica se existe Envio por Nome e Autor"
+    )
+    @ApiResponses(value = [ApiResponse(responseCode = "200", description = "Video recebido com sucesso")])
+    @GetMapping("/verifica")
+    fun buscaPorNomeAutor(
+        @RequestParam("nome") nome: String,
+        @RequestHeader("Authorization") token: String,
+    ): ResponseEntity<Any> {
+        return buscaEnvioPorNomeEAutorUseCase.executar(nome, decodeUsername(token))?.let {
+            ResponseEntity.ok(true)
+        } ?: run {
+            ResponseEntity.ok(false)
+        }
+    }
 
     @Operation(
         summary = "Consulta Envio por Id",
         description = "Consulta Id de envio"
     )
-    @ApiResponses(value = [ApiResponse(responseCode = "202", description = "Video recebido com sucesso")])
-    @PostMapping
-    suspend fun buscaPorId(
+    @ApiResponses(value = [ApiResponse(responseCode = "200", description = "Video recebido com sucesso")])
+    @GetMapping("/{id}")
+    fun buscaPorId(
         @PathParam("id") id: Long,
     ): ResponseEntity<Any> {
         return buscaEnvioPorIdUseCase.executar(id)?.let {
@@ -44,9 +63,9 @@ class EnvioApi(
         summary = "Lista envio por Autor",
         description = "Lista todos os envio de um autor"
     )
-    @ApiResponses(value = [ApiResponse(responseCode = "202", description = "Video recebido com sucesso")])
-    @PostMapping
-    suspend fun listarPorAutor(
+    @ApiResponses(value = [ApiResponse(responseCode = "200", description = "Video recebido com sucesso")])
+    @GetMapping
+    fun listarPorAutor(
         @RequestHeader("Authorization") token: String,
         @RequestParam(required = false) status: Int?
     ): List<Envio> {

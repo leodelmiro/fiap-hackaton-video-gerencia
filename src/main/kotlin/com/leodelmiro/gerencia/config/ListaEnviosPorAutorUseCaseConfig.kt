@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class ListaEnviosPorAutorUseCaseConfig {
     @Bean
-    fun listaArquivosPorAutorUseCase(
+    fun listaEnviosPorAutorUseCase(
         listaEnviosPorAutorGateway: ListaEnviosPorAutorGateway
     ): ListaEnviosPorAutorUseCaseImpl {
         return ListaEnviosPorAutorUseCaseImpl(listaEnviosPorAutorGateway)

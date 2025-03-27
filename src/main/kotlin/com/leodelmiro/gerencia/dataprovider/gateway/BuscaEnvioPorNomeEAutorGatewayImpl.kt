@@ -2,17 +2,17 @@ package com.leodelmiro.gerencia.dataprovider.gateway
 
 import com.leodelmiro.gerencia.core.dataprovider.BuscaEnvioPorNomeEAutorGateway
 import com.leodelmiro.gerencia.core.domain.Envio
-import com.leodelmiro.gerencia.dataprovider.repository.ArquivoRepository
+import com.leodelmiro.gerencia.dataprovider.repository.EnvioRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
 @Component
 class BuscaEnvioPorNomeEAutorGatewayImpl(
     @Autowired
-    private val arquivoRepository: ArquivoRepository,
+    private val envioRepository: EnvioRepository,
 ) : BuscaEnvioPorNomeEAutorGateway {
 
     override fun executar(nome: String, autor: String): Envio? {
-        return arquivoRepository.buscarAquivoPorNomeEAutor(nome, autor)?.toEnvio()
+        return envioRepository.buscarAquivoPorNomeEAutor(nome, autor)?.toEnvio()
     }
 }

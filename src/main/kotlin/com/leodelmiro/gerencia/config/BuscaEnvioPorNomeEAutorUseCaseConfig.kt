@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class BuscaEnvioPorNomeEAutorUseCaseConfig {
     @Bean
-    fun buscaArquivoPorNomeEAutorUseCase(
-        buscaArquivoPorNomeEAutorGateway: BuscaEnvioPorNomeEAutorGatewayImpl
+    fun buscaEnvioPorNomeEAutorUseCase(
+        buscaEnvioPorNomeEAutorGateway: BuscaEnvioPorNomeEAutorGatewayImpl
     ): BuscaEnvioPorNomeEAutorUseCaseImpl {
-        return BuscaEnvioPorNomeEAutorUseCaseImpl(buscaArquivoPorNomeEAutorGateway)
+        return BuscaEnvioPorNomeEAutorUseCaseImpl(buscaEnvioPorNomeEAutorGateway)
     }
 }

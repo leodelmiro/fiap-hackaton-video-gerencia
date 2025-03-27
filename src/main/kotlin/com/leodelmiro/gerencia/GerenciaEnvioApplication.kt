@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class GerenciaArquivoApplication
+class GerenciaEnvioApplication
 
 fun main(args: Array<String>) {
-    runApplication<GerenciaArquivoApplication>(*args)
+    runApplication<GerenciaEnvioApplication>(*args)
 }

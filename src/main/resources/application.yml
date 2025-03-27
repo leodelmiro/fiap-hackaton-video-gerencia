@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://host.docker.internal:5433/produto}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5433/envio}
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
     password: ${SPRING_DATASOURCE_PASSWORD:1234}
   jpa:
@@ -29,6 +29,7 @@ spring:
         endpoint: ${SQS_URL:http://localhost:4567}
         queues:
           notifica-video-processado: notifica-video-processado
+          notifica-video-erro: notifica-video-erro
           processamento-realizado: processamento-realizado
           video-em-processamento: video-em-processamento
           erro-processamento: erro-processamento

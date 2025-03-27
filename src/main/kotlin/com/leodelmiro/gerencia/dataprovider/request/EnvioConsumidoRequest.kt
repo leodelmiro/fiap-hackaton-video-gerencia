@@ -1,9 +1,8 @@
 package com.leodelmiro.gerencia.dataprovider.request
 
-data class VideoProcessadoRequest(
-    val key: String,
+data class EnvioConsumidoRequest(
     val nome: String,
     val descricao: String,
     val autor: String,
-    val url: String
+    val videoKey: String
 )

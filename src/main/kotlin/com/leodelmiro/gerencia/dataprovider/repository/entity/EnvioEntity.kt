@@ -10,10 +10,10 @@ import java.time.LocalDateTime
 @Table(name = "tb_envio")
 data class EnvioEntity(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private var id: Long? = null,
-    private val nome: String,
-    private val status: Status,
-    private val descricao: String,
-    private val autor: String,
+    private val nome: String = "",
+    private val status: Status = Status.EM_PROCESSAMENTO,
+    private val descricao: String = "",
+    private val autor: String = "",
     private val url: String? = null,
     @CreationTimestamp
     private var criadoEm: LocalDateTime? = null
@@ -25,7 +25,7 @@ data class EnvioEntity(
         envio.descricao,
         envio.autor,
         envio.url,
-        null
+        envio.criadoEm
     )
 
     fun toEnvio() = Envio(
@@ -34,6 +34,7 @@ data class EnvioEntity(
         this.status,
         this.descricao,
         this.autor,
-        this.url
+        this.url,
+        this.criadoEm
     )
 }
