@@ -13,6 +13,6 @@ class BuscaEnvioPorNomeEAutorGatewayImpl(
 ) : BuscaEnvioPorNomeEAutorGateway {
 
     override fun executar(nome: String, autor: String): Envio? {
-        return envioRepository.buscarAquivoPorNomeEAutor(nome, autor)?.toEnvio()
+        return envioRepository.buscarEnvioPorNomeEAutor(nome, autor)?.toEnvio()
     }
 }

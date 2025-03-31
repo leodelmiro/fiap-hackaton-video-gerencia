@@ -2,7 +2,7 @@ package com.leodelmiro.gerencia.core.domain
 
 import java.time.LocalDateTime
 
-class Envio(
+data class Envio(
     val id: Long? = null,
     val nome: String,
     val status: Status,

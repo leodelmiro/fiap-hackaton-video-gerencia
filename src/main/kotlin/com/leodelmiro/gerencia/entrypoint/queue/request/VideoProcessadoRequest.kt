@@ -1,4 +1,4 @@
-package com.leodelmiro.gerencia.dataprovider.request
+package com.leodelmiro.gerencia.entrypoint.queue.request
 
 data class VideoProcessadoRequest(
     val key: String,

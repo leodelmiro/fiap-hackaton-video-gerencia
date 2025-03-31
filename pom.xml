@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.leodelmiro</groupId>
-	<artifactId>gerencia-arquivo</artifactId>
+	<artifactId>gerencia-envios</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>gerencia-arquivo</name>
+	<name>gerencia-envios</name>
 	<description>Projeto Hackaton Fiap Tech Challenge - Software Architecture - App Kubernetes responsável pelo Gerenciamento de Arquivos</description>
 	<url/>
 	<licenses>
@@ -93,6 +93,12 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-inline</artifactId>
+			<version>5.2.0</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

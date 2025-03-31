@@ -17,7 +17,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 
-@Tag(name = "Arquivos", description = "Endpoints relacionados aos envios de arquivos do Video")
+@Tag(name = "Envios", description = "Endpoints relacionados aos envios de arquivos do Video")
 @RestController
 @RequestMapping("/api/v1/envios")
 class EnvioApi(

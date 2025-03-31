@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository
 @Repository
 interface EnvioRepository : JpaRepository<EnvioEntity, Long> {
     @Query("SELECT e FROM EnvioEntity e WHERE e.nome = :nome AND e.autor = :autor")
-    fun buscarAquivoPorNomeEAutor(@Param("nome") nome: String, @Param("autor") autor: String): EnvioEntity?
+    fun buscarEnvioPorNomeEAutor(@Param("nome") nome: String, @Param("autor") autor: String): EnvioEntity?
 
     @Query("SELECT e FROM EnvioEntity e WHERE e.autor = :autor AND (:status IS NULL OR e.status = :status)")
-    fun listarAquivosPorAutor(@Param("autor") autor: String, @Param("status") status: Int?): List<EnvioEntity>
+    fun listarEnviosPorAutor(@Param("autor") autor: String, @Param("status") status: Int?): List<EnvioEntity>
 }

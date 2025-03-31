@@ -7,7 +7,7 @@ import com.leodelmiro.gerencia.core.domain.Envio
 import com.leodelmiro.gerencia.core.domain.Status
 import com.leodelmiro.gerencia.core.usecase.BuscaEnvioPorNomeEAutorUseCase
 import com.leodelmiro.gerencia.core.usecase.SalvaEnvioUseCase
-import com.leodelmiro.gerencia.dataprovider.request.EnvioConsumidoRequest
+import com.leodelmiro.gerencia.entrypoint.queue.request.EnvioConsumidoRequest
 import io.awspring.cloud.sqs.annotation.SqsListener
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

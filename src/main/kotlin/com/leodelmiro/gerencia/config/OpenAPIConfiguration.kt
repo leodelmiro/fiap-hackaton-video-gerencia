@@ -22,10 +22,10 @@ class OpenAPIConfiguration {
         val mitLicense = License().name("MIT License").url("https://choosealicense.com/licenses/mit/")
 
         val info = Info()
-            .title("Hackaton - Gerenciamento de Arquivos")
+            .title("Hackaton - Gerenciamento de Envios")
             .version("1.0")
             .contact(contact)
-            .description("A API expõe endpoints para o Hackathon de Videos da App de Gerenciamento de Arquivos.")
+            .description("A API expõe endpoints para o Hackathon de Videos da App de Gerenciamento de Envios.")
             .license(mitLicense)
 
         return OpenAPI().info(info).servers(listOf(devServer))

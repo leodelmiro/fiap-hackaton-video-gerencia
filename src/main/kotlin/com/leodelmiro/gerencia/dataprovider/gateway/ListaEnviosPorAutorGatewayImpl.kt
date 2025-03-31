@@ -14,6 +14,6 @@ class ListaEnviosPorAutorGatewayImpl(
 ) : ListaEnviosPorAutorGateway {
 
     override fun executar(autor: String, status: Status?): List<Envio> {
-        return envioRepository.listarAquivosPorAutor(autor, status?.valor).map { arquivoEntity -> arquivoEntity.toEnvio() }
+        return envioRepository.listarEnviosPorAutor(autor, status?.valor).map { envioEntity -> envioEntity.toEnvio() }
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class SalvaEnvioUseCaseConfig {
     @Bean
-    fun salvaEnvioUseCase(salvaArquivoGateway: SalvaEnvioGatewayImpl): SalvaEnvioUseCaseImpl {
-        return SalvaEnvioUseCaseImpl(salvaArquivoGateway)
+    fun salvaEnvioUseCase(salvaEnvioGateway: SalvaEnvioGatewayImpl): SalvaEnvioUseCaseImpl {
+        return SalvaEnvioUseCaseImpl(salvaEnvioGateway)
     }
 }
