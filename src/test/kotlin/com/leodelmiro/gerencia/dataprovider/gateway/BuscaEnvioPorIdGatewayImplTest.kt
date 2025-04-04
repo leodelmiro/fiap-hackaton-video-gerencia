@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.*
 import utils.criaEnvio
+import java.time.LocalDateTime
 import java.util.*
 
 class BuscaEnvioPorIdGatewayImplTest {
@@ -17,8 +18,9 @@ class BuscaEnvioPorIdGatewayImplTest {
     @Test
     fun `deve retornar envio quando encontrado no repository`() {
         val id = 1L
-        val envioEntity = EnvioEntity(criaEnvio(id = id))
-        val envio = criaEnvio(id = id)
+        val hora = LocalDateTime.now()
+        val envioEntity = EnvioEntity(criaEnvio(id = id, criadoEm = hora))
+        val envio = criaEnvio(id = id, criadoEm = hora)
         `when`(envioRepository.findById(id)).thenReturn(Optional.of(envioEntity))
 
         val resultado = buscaEnvioPorIdGateway.executar(id)
