@@ -41,10 +41,8 @@ Este repositório é referente ao microserviço responsável pelo gerenciamento 
 
 - Entrypoint: Entrada de acesso externo para a aplicação
     - Api: Entrada de acesso via Rest a aplicação
-    - Que: Entrada de acesso via queue para aplicação
-    - Controller: Controlador da lógica dos UseCases do que chega na aplicação.
-    - Presenter: Camada que faz algumas transformações de dados para serem apresentadas.
-- Core: Sem acesso ao mundo externo, livre de frameworks e isolado.
+    - Queue: Entrada de acesso via queue para aplicação
+ - Core: Sem acesso ao mundo externo, livre de frameworks e isolado.
     - Domain: Pode ser acesso por qualquer um.
     - Usecase: Regras de negócio
     - Dataprovider: Interfaces para o dados do mundo externo
