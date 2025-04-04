@@ -11,7 +11,6 @@ import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
-import jakarta.websocket.server.PathParam
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -50,7 +49,7 @@ class EnvioApi(
     @ApiResponses(value = [ApiResponse(responseCode = "200", description = "Video recebido com sucesso")])
     @GetMapping("/{id}")
     fun buscaPorId(
-        @PathParam("id") id: Long,
+        @PathVariable("id") id: Long,
     ): ResponseEntity<Any> {
         return buscaEnvioPorIdUseCase.executar(id)?.let {
             ResponseEntity.ok(it)
