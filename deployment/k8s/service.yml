@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gerencia-envio-svc
+  namespace: hackathon-fiap
+spec:
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: gerencia-envio-app
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 30082
