@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.leodelmiro</groupId>
-	<artifactId>gerencia-envios</artifactId>
+	<artifactId>gerencia-envio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gerencia-envios</name>
 	<description>Projeto Hackaton Fiap Tech Challenge - Software Architecture - App Kubernetes responsável pelo Gerenciamento de Arquivos</description>
