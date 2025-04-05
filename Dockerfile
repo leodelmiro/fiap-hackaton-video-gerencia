@@ -2,7 +2,7 @@ FROM openjdk:21-jdk-slim
 
 WORKDIR /app
 
-COPY target/gerencia-envio-0.0.1-SNAPSHOT.jar app.jar
+COPY target/gerencia-envios-0.0.1-SNAPSHOT.jar app.jar
 
 ENV PORT 8080
 EXPOSE 8080
