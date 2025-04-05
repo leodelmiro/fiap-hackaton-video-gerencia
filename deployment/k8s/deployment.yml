@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gerencia-envio-app
+  namespace: hackathon-fiap
+  labels:
+    app.kubernetes.io/name: gerencia-envio-app
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 50%
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: gerencia-envio-app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: gerencia-envio-app
+    spec:
+      serviceAccountName: gerencia-envio-serviceaccount
+      containers:
+        - name: gerencia-envio-app
+          image: DOCKER_IMAGE
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "256m"
+              memory: "512M"
+            limits:
+              cpu: "512m"
+              memory: "2048M"
+          env:
+            - name: SQS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: gerencia-envio-configmap
+                  key: sqs_url
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: gerencia-envio-configmap
+                  key: db_url
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: gerencia-envio-configmap
+                  key: db_username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: gerencia-envio-configmap
+                  key: db_password
+            - name: AWS_SECRET_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: gerencia-envio-configmap
+                  key: aws_secret_key
+            - name: AWS_SESSION_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: gerencia-envio-configmap
+                  key: aws_session_token
+            - name: AWS_ACCESS_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: gerencia-envio-configmap
+                  key: aws_access_key
+          ports:
+            - name: http-port
+              containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: http-port
+            initialDelaySeconds: 120
+            periodSeconds: 15
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: http-port
+            initialDelaySeconds: 240
+            periodSeconds: 15
+            failureThreshold: 3
