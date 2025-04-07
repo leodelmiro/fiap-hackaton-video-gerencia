@@ -31,6 +31,7 @@ Este repositório é referente ao microserviço responsável pelo gerenciamento 
 - Kotlin
 - Spring
 - Swagger
+- RDS
 - Postgres
 - Docker
 - Docker Compose
