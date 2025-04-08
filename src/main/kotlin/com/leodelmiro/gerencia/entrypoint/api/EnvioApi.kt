@@ -7,13 +7,10 @@ import com.leodelmiro.gerencia.core.usecase.BuscaEnvioPorNomeEAutorUseCase
 import com.leodelmiro.gerencia.core.usecase.ListaEnviosPorAutorUseCase
 import com.leodelmiro.gerencia.entrypoint.api.shared.GlobalControllerAdvice.ErrorResponse
 import com.leodelmiro.gerencia.entrypoint.api.utils.TokenDecoder.decodeUsername
-import com.leodelmiro.gerencia.entrypoint.queue.VideoProcessadoConsumer
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -27,7 +24,6 @@ class EnvioApi(
     private val buscaEnvioPorNomeEAutorUseCase: BuscaEnvioPorNomeEAutorUseCase,
     private val listaEnviosPorAutorUseCase: ListaEnviosPorAutorUseCase
 ) {
-    private val logger: Logger = LoggerFactory.getLogger(EnvioApi::class.java)
 
     @Operation(
         summary = "Verifica nome envio existente",
@@ -39,7 +35,6 @@ class EnvioApi(
         @RequestParam("nome") nome: String,
         @RequestHeader("Authorization") token: String,
     ): ResponseEntity<Any> {
-        logger.info(token)
         return buscaEnvioPorNomeEAutorUseCase.executar(nome, decodeUsername(token))?.let {
             ResponseEntity.ok(true)
         } ?: run {
@@ -73,7 +68,6 @@ class EnvioApi(
         @RequestHeader("Authorization") token: String,
         @RequestParam(required = false) status: Int?
     ): List<Envio> {
-        logger.info(token)
         return listaEnviosPorAutorUseCase.executar(decodeUsername(token), status?.let { fromValor(status) })
     }
 }
