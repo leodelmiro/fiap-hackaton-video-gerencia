@@ -8,6 +8,7 @@ import com.leodelmiro.gerencia.core.domain.Status
 import com.leodelmiro.gerencia.core.usecase.BuscaEnvioPorNomeEAutorUseCase
 import com.leodelmiro.gerencia.core.usecase.SalvaEnvioUseCase
 import com.leodelmiro.gerencia.entrypoint.queue.request.EnvioConsumidoRequest
+import com.leodelmiro.gerencia.entrypoint.queue.request.ErroEnvioConsumidoRequest
 import io.awspring.cloud.sqs.annotation.SqsListener
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -27,8 +28,8 @@ class ErroDuranteProcessamentoConsumer(
 
     @SqsListener("\${spring.cloud.aws.sqs.queues.erro-processamento}")
     fun escutaErroAoProcessar(@Payload payload: String) {
-        logger.info("Recebido novo video para processamento: $payload")
-        val videoMessage = objectMapper.readValue(payload, EnvioConsumidoRequest::class.java)
+        logger.info("Recebido novo video com erro para processamento: $payload")
+        val videoMessage = objectMapper.readValue(payload, ErroEnvioConsumidoRequest::class.java)
         buscaEnvioPorNomeEAutorUseCase.executar(videoMessage.nome, videoMessage.autor)?.let {
             salvaEnvioUseCase.executar(
                 Envio(

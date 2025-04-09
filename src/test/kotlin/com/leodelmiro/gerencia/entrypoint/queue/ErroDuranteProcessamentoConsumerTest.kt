@@ -27,7 +27,7 @@ class ErroDuranteProcessamentoConsumerTest {
     fun `deve processar mensagem e notificar erro quando envio for encontrado`() {
         val envio = criaEnvio(id = 1, status = Status.ERRO)
         val payload =
-            """{"nome":"${envio.nome}","autor":"${envio.autor}","descricao":"${envio.descricao}","videoKey":"test"}"""
+            """{"nome":"${envio.nome}","autor":"${envio.autor}","descricao":"${envio.descricao}","key":"test"}"""
 
         `when`(buscaEnvioPorNomeEAutorUseCase.executar(envio.nome, envio.autor)).thenReturn(envio)
         `when`(salvaEnvioUseCase.executar(envio)).thenReturn(envio)
