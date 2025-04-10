@@ -40,6 +40,7 @@ class ErroDuranteProcessamentoConsumer(
                     it.autor
                 )
             )
+            it.status = Status.ERRO
             notificaErroProcessadoGateway.executar(it)
             return
         } ?: run {

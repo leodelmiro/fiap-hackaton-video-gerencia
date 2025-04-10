@@ -16,10 +16,8 @@ import org.springframework.stereotype.Component
 @Component
 class VideoEmProcessamentoConsumer(
     private val salvaEnvioUseCase: SalvaEnvioUseCase,
-    private val buscaEnvioPorNomeEAutorUseCase: BuscaEnvioPorNomeEAutorUseCase,
     private val objectMapper: ObjectMapper,
     private val notificaErroProcessadoGateway: NotificaVideoProcessadoGateway,
-
     ) {
 
     private val logger: Logger = LoggerFactory.getLogger(VideoEmProcessamentoConsumer::class.java)

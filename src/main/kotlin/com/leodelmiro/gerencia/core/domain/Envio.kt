@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 data class Envio(
     val id: Long? = null,
     val nome: String,
-    val status: Status,
+    var status: Status,
     val descricao: String,
     val autor: String,
     val url: String? = null,
