@@ -12,13 +12,11 @@ import utils.criaEnvio
 class VideoEmProcessamentoConsumerTest {
 
     private val salvaEnvioUseCase = mock(SalvaEnvioUseCase::class.java)
-    private val buscaEnvioPorNomeEAutorUseCase = mock(BuscaEnvioPorNomeEAutorUseCase::class.java)
     private val objectMapper = ObjectMapper().findAndRegisterModules()
     private val notificaErroProcessadoGateway = mock(NotificaVideoProcessadoGateway::class.java)
 
     private val videoEmProcessamentoConsumer = VideoEmProcessamentoConsumer(
         salvaEnvioUseCase,
-        buscaEnvioPorNomeEAutorUseCase,
         objectMapper,
         notificaErroProcessadoGateway
     )
