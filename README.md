@@ -40,17 +40,17 @@ Este repositório é referente ao microserviço responsável pelo gerenciamento 
 
 ## Estrutura do Projeto
 
-- Entrypoint: Entrada de acesso externo para a aplicação
+- Entrypoint: Entrada de acesso externo para a aplicação.
     - Api: Entrada de acesso via Rest a aplicação.
     - Queue: Entrada de acesso via queue para aplicação.
  - Core: Sem acesso ao mundo externo, livre de frameworks e isolado.
     - Domain: Pode ser acesso por qualquer um.
     - Usecase: Regras de negócio.
-    - Dataprovider: Interfaces para o dados do mundo externo
+    - Dataprovider: Interfaces para o dados do mundo externo.
 - Dataprovider: Implmentações para o mundo externo.
     - Gateway: Implementações das Interfaces de acesso do Core.
     - Repository: Database.
-- Config: Configurações do Projeto
+- Config: Configurações do Projeto.
 
 ## Rodando o Projeto Local
 
