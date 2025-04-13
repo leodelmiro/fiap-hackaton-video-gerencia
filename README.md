@@ -29,7 +29,7 @@ Este repositório é referente ao microserviço responsável pelo gerenciamento 
 ## Tecnologias Utilizadas
 
 - Kotlin
-- Spring
+- Spring 3
 - Swagger
 - RDS
 - Postgres
